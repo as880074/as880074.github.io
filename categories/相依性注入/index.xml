@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技術 on T&amp;X</title>
-    <link>https://as880074.github.io/categories/%E6%8A%80%E8%A1%93/</link>
-    <description>Recent content in 技術 on T&amp;X</description>
+    <title>相依性注入 on T&amp;X</title>
+    <link>https://as880074.github.io/categories/%E7%9B%B8%E4%BE%9D%E6%80%A7%E6%B3%A8%E5%85%A5/</link>
+    <description>Recent content in 相依性注入 on T&amp;X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://as880074.github.io/categories/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://as880074.github.io/categories/%E7%9B%B8%E4%BE%9D%E6%80%A7%E6%B3%A8%E5%85%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SOLID</title>
       <link>https://as880074.github.io/post/technical/20220520/solid/</link>

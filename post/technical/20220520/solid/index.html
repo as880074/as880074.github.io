@@ -1,0 +1,1485 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>SOLID - T&amp;X</title>
+    <meta name="keywords" content="T&amp;X,架構師,軟體開發,部落客,工程師,架構師,個人,財經,區塊鏈,筆記,技術,分享,C#">
+    
+    <meta property="og:title" content="SOLID">
+    <meta property="og:site_name" content="T&amp;X">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="SOLID - T&amp;X" />
+    <meta name="description" content="T&amp;X | 軟體 | 架構 | Csharp | 區塊鏈 | 財經"> 
+    
+      <link rel="stylesheet" href="https://as880074.github.io/css/clipboard.css">
+    
+    <link rel="shortcut icon" href="https://as880074.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://as880074.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://as880074.github.io/img/apple-touch-icon.png" />
+    <link href="https://as880074.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="text/javascript" id="hexo.configuration">
+    "\u003cscript data-ad-client=\"wwwww\"  \r\n async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"\u003e\u003c/script\u003e"
+  
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+
+  
+</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <meta content="" name="keywords">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://as880074.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">T&amp;X</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">玩出新世界</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/categories/%E6%8A%80%E8%A1%93/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技術
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歷年文章
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />關於
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-"></i> <br />
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜尋</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+      
+        
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7NEGYFK0G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H7NEGYFK0G');
+</script>
+      
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://as880074.github.io/post/technical/20220520/solid/" itemprop="url">
+        SOLID
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="202020-00-05">
+    202020-00-05
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://as880074.github.io/categories/%E6%8A%80%E8%A1%93" itemprop="url" rel="index">
+        <span itemprop="name">技術</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://as880074.github.io/categories/%E7%9B%B8%E4%BE%9D%E6%80%A7%E6%B3%A8%E5%85%A5" itemprop="url" rel="index">
+        <span itemprop="name">相依性注入</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀：</span>
+<span class="leancloud-visitors-count">6427 字 ~13分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="solid">SOLID</h1>
+<p><strong>開發情境:</strong></p>
+<ul>
+<li>開發的時間長?還是維護的時間較長?</li>
+<li>有團隊一起開發?還是一個人寫Code</li>
+<li>一個長期維護的專案，需求變更頻繁度?</li>
+<li>你如何讓程式碼具備可讀性與擴充性</li>
+<li>如何避免在修改程式的過程中引發連鎖反應?(改A壞B)</li>
+</ul>
+<h1 id="oop的四個特性">OOP的四個特性</h1>
+<h2 id="抽象abstraction">抽象(Abstraction)</h2>
+<ul>
+<li>將真實世界的需求轉換成為OOP中的類別</li>
+<li><strong>類別</strong>可以包含<strong>狀態</strong>(屬性)與<strong>行為</strong>(方法)。</li>
+</ul>
+<h2 id="封裝encapsulation">封裝(Encapsulation)</h2>
+<ul>
+<li>隱藏/保護內部實作的細節，並可以對屬性或方法設定存取層級(Public,Private,Protected)</li>
+</ul>
+<h2 id="繼承inheritance">繼承(Inheritance)</h2>
+<ul>
+<li>可以讓您建立新類別以重複使用、擴充和修改其他類別中定義的行為。</li>
+</ul>
+<h2 id="多型polymorphism">多型(Polymorphism)</h2>
+<ul>
+<li>在相同介面下，可以用不同的型別來實現。</li>
+<li>多型有分成好幾種不同類型。</li>
+</ul>
+<p>第一步:
+從需求或規格中進行&quot;抽象化&quot;的過程
+透過&quot;抽象化&quot;過程定義出類別
+第二步:
+對實作的細節進行&quot;封裝&quot;(隱藏、保護)</p>
+<p>第三步:
+透過&quot;繼承&quot;來重複利用、擴充和修改基底類別的定義</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class BaseClass
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  public string Name{get;set;}
+</span></span><span style="display:flex;"><span>  public int Age {get;set;}
+</span></span><span style="display:flex;"><span>  public virtual void Output()=&gt;Console.WriteLine(&#34;Hello&#34;);
+</span></span><span style="display:flex;"><span>  public BaseClass(string name) =&gt; Name =name;
+</span></span><span style="display:flex;"><span>  public BaseClass()=&gt; Name =&#34;&#34;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class DerivedClass : BaseClass
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	public string Department { get; set; }
+</span></span><span style="display:flex;"><span>	public DerivedClass() : base(&#34;Default&#34;) 
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		base.Age = 18;
+</span></span><span style="display:flex;"><span>		//base.Department = &#34;IT&#34;;
+</span></span><span style="display:flex;"><span>		base.Output();
+</span></span><span style="display:flex;"><span>		this.Age = 19;
+</span></span><span style="display:flex;"><span>		this.Department =&#34;IT&#34;;
+</span></span><span style="display:flex;"><span>		this.Output();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	public override void Output()=&gt;Console.WriteLine(&#34;Hello !!&#34;);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="https://i.imgur.com/IPcgyfV.png" alt=""></p>
+<p><strong>在C#中所有類都是&quot;多型&quot;</strong></p>
+<ul>
+<li>在設計時期(Design Time)
+<ul>
+<li><strong>基底類別</strong>可以定義和實作【虛擬】屬性或方法(<!-- raw HTML omitted -->virtual<!-- raw HTML omitted -->)</li>
+<li><strong>衍生類別</strong>可以【覆寫】這些虛擬的屬性或方法(<!-- raw HTML omitted -->override<!-- raw HTML omitted -->)</li>
+</ul>
+</li>
+<li>在執行時期(Runtime)
+<ul>
+<li>當呼叫基底類別的虛擬方法時，會改呼叫子類別覆蓋的方法</li>
+</ul>
+</li>
+<li>在C#中，所有類型都是<strong>多型</strong>類型
+<ul>
+<li>因為所有類型(包誇使用者定義的類型)都是繼承自Object</li>
+</ul>
+</li>
+<li>如果再C#中設計防止衍生類別覆蓋虛擬成員
+<ul>
+<li><code>public sealed override void Dowork(){}</code></li>
+</ul>
+</li>
+<li>多載(Overloading)比較有點爭議(<strong>有些人認為這不算多型</strong>)</li>
+</ul>
+<h1 id="內聚力與耦合力cohesion--coupling">內聚力與耦合力(Cohesion &amp; Coupling)</h1>
+<h2 id="何謂模組module">何謂&quot;模組&quot;(Module)</h2>
+<ul>
+<li>一個抽象的概念</li>
+<li>以C#舉例
+<ul>
+<li>可能是一個<strong>類別</strong>(Class)</li>
+<li>可能是一個<strong>方法</strong>(method)</li>
+<li>可能是一個<strong>組件</strong>(assembly)</li>
+</ul>
+</li>
+</ul>
+<h2 id="內聚力-cohesion">內聚力 Cohesion</h2>
+<p>:::info
+什麼是內聚力?一次專注做一件事情，這件事情做得越好他的內聚力就越高
+:::</p>
+<p>一個<strong>模組</strong>內完成<strong>一件工作</strong>的度量指標</p>
+<p><!-- raw HTML omitted --><strong>高內聚力</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>在一個<strong>模組</strong>內只完成一件工作</li>
+<li>內聚力高，意味者該模組可以獨立運作，也意味者更容易重複利用</li>
+<li>範例:一個Class只負責一件事情(例如寄送郵件)</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>低內聚力</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>在一個<strong>模組</strong>內完成多份工作</li>
+<li>內聚力低，意味者這個模組會造成難以維護/測試/重用/理解</li>
+<li>範例:所有功能寫在一個class裡面或一個method有500行程式碼</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>最佳實務</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>在設計模組的時候，要盡量設計出<!-- raw HTML omitted -->高內聚力<!-- raw HTML omitted -->的程式碼。</li>
+<li>若要在一個模組內完成多項工作，建議拆成多個不同的類別</li>
+<li>實現<!-- raw HTML omitted -->SRP<!-- raw HTML omitted -->就是實現<!-- raw HTML omitted --><strong>提高內聚力</strong><!-- raw HTML omitted -->的一種表現</li>
+</ul>
+<h2 id="耦合力-coupling">耦合力 Coupling</h2>
+<p>模組跟模組之間的關聯強度</p>
+<ul>
+<li>模組之間互相依賴的程度</li>
+<li>衡量兩個模組的緊密連接程度</li>
+<li>範例:在ClassB裡面，直接建立了ClassA的物件實體，就會<strong>建立</strong>ClassA與ClassB之間的<strong>耦合關係</strong>。</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>高耦合力</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>意味者當改了A模組時，相關聯的B模組就會容易被影響(改A壞B)</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>低耦合力</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>當修改模組的時候，有越少的模組被影響，就意味者耦合力較低</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>最佳實務</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>在設計不同模組的時候，要盡量設計出<!-- raw HTML omitted -->低耦合力<!-- raw HTML omitted -->的程式碼。</li>
+<li>實現<!-- raw HTML omitted -->DIP<!-- raw HTML omitted -->就是實現<!-- raw HTML omitted -->降低耦合力<!-- raw HTML omitted -->的一個原則</li>
+</ul>
+<h2 id="notebook-隨堂測驗">:notebook: <strong>隨堂測驗</strong></h2>
+<p><strong>跟多少型別發生耦合?</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public  class InvitaionService
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void SendInvite(string email,string firstName,string lastName)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(String.IsNullOrWhiteSpace(firstName))||(String.IsNullOrWhiteSpace(lastName))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            throw new Exception(&#34;Name is not vaild&#34;);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    if(!email.Contain(&#34;@&#34;)||email.Contains(&#34;.&#34;))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        throw new Exception(&#34;Email is not vaild!&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    SmtpClient client = new SmtpClient();
+</span></span><span style="display:flex;"><span>    client.Send(new MailMessage(&#34;mysite@google.com,email&#34;))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Subject =&#34;Please join me at my party!&#34;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><!-- raw HTML omitted --><strong>Ans:</strong> string、Exception、SmtpClient、MailMessage<!-- raw HTML omitted --></p>
+<blockquote>
+<p>設計出一個好的程式
+內聚力越高越好 耦合度越低越好
+高內聚、低耦合</p>
+</blockquote>
+<h2 id="notebook-隨堂測驗-1">:notebook: <strong>隨堂測驗</strong></h2>
+<p><strong>串聯的耦合關係</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class Order
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private ShoppingCartContents cart;
+</span></span><span style="display:flex;"><span>    private float salesTax;
+</span></span><span style="display:flex;"><span>    public Order(ShoppingCartContents cart,float salesTax)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        this.cart=cart;
+</span></span><span style="display:flex;"><span>        this.salesTax=salesTax;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public float OrderTotal()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        float cartTotal = 0;
+</span></span><span style="display:flex;"><span>        for(int i=0;i&lt;cart.item.length;i++)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            cart.item+=cart.item[i].price;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        return cart.item;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class ShoppingCartContents
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public ShoppingCart[] items;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class ShoppingCart
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public float Price;
+</span></span><span style="display:flex;"><span>    public int Quanity;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>完美上來看要寫出<strong>低耦合高內聚</strong>的程式碼，但現實沒有這麼簡單，所以我們才需要一些<strong>原則</strong>來幫助我們釐清什麼樣的程式才是好的</p>
+</blockquote>
+<h1 id="介紹solid物件導向設計原則">介紹SOLID物件導向設計原則</h1>
+<p><!-- raw HTML omitted --><strong>何謂原則(Principle)</strong><!-- raw HTML omitted --></p>
+<ul>
+<li>A <!-- raw HTML omitted -->principle<!-- raw HTML omitted --> is a concept or value that is a guide for <!-- raw HTML omitted -->behavior<!-- raw HTML omitted --> or <!-- raw HTML omitted -->evaluation<!-- raw HTML omitted --></li>
+<li>所謂【<!-- raw HTML omitted -->原則<!-- raw HTML omitted -->】(Principle)就是一種【概念】或【價值】，用來導引你產生<!-- raw HTML omitted -->適切的行為<!-- raw HTML omitted -->與<!-- raw HTML omitted -->價值評量方法<!-- raw HTML omitted --></li>
+</ul>
+<p><strong>白話文解釋</strong></p>
+<ul>
+<li>依循SOLID原則，可以<!-- raw HTML omitted -->寫出比較好的程式碼<!-- raw HTML omitted --></li>
+<li>依循SOLID原則，能夠<!-- raw HTML omitted -->判斷程式碼的好壞<!-- raw HTML omitted --></li>
+</ul>
+<p><strong>背起來</strong>
+:::info</p>
+<ul>
+<li>單一責任原則SRP（Single Responsibility Principle）</li>
+<li>開放封閉原則OCP(Open Closed Principle)</li>
+<li>里氏替換原則LSP（Liskov Substitution Principle）</li>
+<li>介面隔離原則ISP（Interface Segregation Principle）</li>
+<li>相依反轉原則DIP（Dependence Inversion Principle）
+:::</li>
+</ul>
+<p><strong>學習SOLID物件導向設計原則的好處</strong></p>
+<ul>
+<li>降低程式碼複雜程度</li>
+<li>具有較佳程式碼可讀性</li>
+<li>提升模組可重複利用性</li>
+<li>讓模組具有高內聚，低耦合力</li>
+<li>面臨變更需求時可減少破壞現有模組的風險</li>
+</ul>
+<h1 id="單一責任原則srp">單一責任原則SRP</h1>
+<p><strong>何謂<!-- raw HTML omitted -->責任<!-- raw HTML omitted -->(Responsibility)</strong></p>
+<ul>
+<li>責任= reason to change (改變的理由)</li>
+<li>當一個類別擁有多個不同的責任，意味者一個類別責任多項不同的工作，當需求變更時，更動一個類別的理由也可能不只一個</li>
+</ul>
+<p><!-- raw HTML omitted --><strong>以下類別有多少責任?</strong><!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class OrderManger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public bool LoadOrder()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        //1.建立資料庫連線(包含寫死的連線字串)
+</span></span><span style="display:flex;"><span>        //2.執行ADO.NET資料存取(包含資料塞選)
+</span></span><span style="display:flex;"><span>        //3.跑回圈取得資料(包含資料格式轉換)
+</span></span><span style="display:flex;"><span>        //4.回傳資料
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>:thinking_face: <strong>思考:有什麼理由會需要改動到這個class</strong>
+<!-- raw HTML omitted -->Ans:資料格式變了，連線字串改變，塞選資料條件變了<!-- raw HTML omitted --></p>
+<h2 id="關於srp的基本精神">關於SRP的基本精神</h2>
+<ul>
+<li>
+<p>一個類別負擔太多責任時，意味者該<!-- raw HTML omitted -->類別<!-- raw HTML omitted -->可以被切割</p>
+<ul>
+<li>可以透過定義一個全新的類別輕鬆做到</li>
+<li>對類別進行適度的切割，方便日後管理與維護</li>
+</ul>
+</li>
+<li>
+<p><!-- raw HTML omitted -->SRP<!-- raw HTML omitted -->主要精神就是<!-- raw HTML omitted -->提高內聚力<!-- raw HTML omitted --></p>
+<ul>
+<li><!-- raw HTML omitted -->高內聚力<!-- raw HTML omitted -->意味者可以想到<!-- raw HTML omitted -->一個清楚的理由<!-- raw HTML omitted -->去改它!</li>
+</ul>
+</li>
+</ul>
+<h2 id="低內聚力的示意圖">低內聚力的示意圖</h2>
+<p><img src="https://i.imgur.com/3QKHn8S.png" alt=""></p>
+<blockquote>
+<p><strong>SRP主要精神就是在提高內聚力</strong></p>
+</blockquote>
+<h2 id="常見的設計問題">常見的設計問題</h2>
+<ul>
+<li>將所有功能寫在一個類別中</li>
+<li>類別複雜度過高</li>
+<li>維護時經常找不到應該要改哪裡</li>
+<li>發生邏輯問題時找不到BUG在哪裡</li>
+<li>使用類別時不知道應該呼叫哪個方法</li>
+</ul>
+<h2 id="關於srp的使用時機">關於SRP的使用時機</h2>
+<ul>
+<li><strong>兩個責任</strong>會在<strong>不同時間點</strong>產生變更需求
+<ul>
+<li>當你想<strong>改資料庫查詢語法</strong>與修改<strong>系統紀錄的邏輯</strong>時，都會改到同一個類別，那就需要拆開!</li>
+</ul>
+</li>
+<li>類別中有一段程式碼有<!-- raw HTML omitted -->重複利用<!-- raw HTML omitted -->的需求
+<ul>
+<li>這段程式碼在其他類別也用的到</li>
+</ul>
+</li>
+<li>系統中有個<strong>非必要</strong>的功能(<!-- raw HTML omitted -->未來需求<!-- raw HTML omitted -->)，老闆又逼你要實作時
+<ul>
+<li>責任會直接依附在類別中，但對維護造成困難</li>
+</ul>
+</li>
+</ul>
+<p>修改前:
+<strong>請問他有SRP問題嗎，有的話 要如何重構</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    DataAccess.InsertData();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class DataAccess
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static void InsertData()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Data inserted into database successfully&#34;);
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Logged Time&#34; + DateTime.Now.ToLongTimeString()+&#34;Log Data insertion completed successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>修改後:
+<strong>將寫入資料、寫LOG拆開</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class DataAccess
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static void InsertData()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Data inserted into database successfully&#34;);
+</span></span><span style="display:flex;"><span>        Logger.Writelog();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Logger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static void WriteLog()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Logged Time&#34; + DateTime.Now.ToLongTimeString()+&#34;Log Data insertion completed successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="srp討論事項">SRP討論事項</h2>
+<ul>
+<li>你怎樣確認一個類別被賦予了過多的責任?</li>
+<li>套用SRP可能有副作用，因為類別變多導致耦合力增加</li>
+</ul>
+<p><img src="https://i.imgur.com/XLECseE.png" alt=""></p>
+<blockquote>
+<p><!-- raw HTML omitted -->提高耦合力，意味者&quot;改B壞A&quot;的機會大幅增加!<!-- raw HTML omitted --></p>
+</blockquote>
+<h2 id="關於srp還需要注意的事">關於SRP還需要注意的事</h2>
+<ul>
+<li>參考YAGNI(You Ain&rsquo;t Gonna Need It)原則
+<ul>
+<li>不用急於在第一時間就專注於分離責任</li>
+<li>尚未出現的需求(未來的需求)不需要預先分離責任</li>
+<li>當需求變更的時候，再進行類別分割即可!</li>
+</ul>
+</li>
+<li>SRP是SOLID中簡單的，但卻是最難做到的
+<ul>
+<li>需要不斷提升你的<strong>開發經驗</strong>與<strong>重構技術</strong></li>
+<li>如果沒有足夠的經驗去定義一個物件的Reponsibility那麼建議你不要過早進行SRP規劃!</li>
+</ul>
+</li>
+</ul>
+<h2 id="notebook-練習情境">:notebook: <strong>練習情境</strong></h2>
+<p>請示者找出OrderMannger類別，不符合 單一責任原則地方
+請指出這個類別是否違反了SRP原則?
+請說明理由與如何改善</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class OrderManaer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public List&lt;Product&gt; products=new List&lt;Product&gt;();
+</span></span><span style="display:flex;"><span>    public void Processing()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        //1.檢查商品庫存數量是否足夠
+</span></span><span style="display:flex;"><span>        //2.進行付款處理程序
+</span></span><span style="display:flex;"><span>        //3.進行送貨處理程序
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>請試者修正該OrderManager類別，使其符合 單一責任原則</strong>
+將多個責任使用新類別分離出來，但還有什麼問題?</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class Product{}
+</span></span><span style="display:flex;"><span>public class Cstomer{}
+</span></span><span style="display:flex;"><span>public class Stock
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void checkAvailability(
+</span></span><span style="display:flex;"><span>        IEnumerable&lt;Product&gt; products){}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Payment
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Processing(
+</span></span><span style="display:flex;"><span>        Customer customer,
+</span></span><span style="display:flex;"><span>        IEnumerable&lt;Product&gt; product){}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Shipment
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void SendProducts(
+</span></span><span style="display:flex;"><span>        Customer customer,
+</span></span><span style="display:flex;"><span>        IEnumerable&lt;Product&gt; products){}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class OrderManger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public List&lt;Product&gt; Products=new List&lt;Product&gt;();
+</span></span><span style="display:flex;"><span>    public Customer Customer{get;set;}
+</span></span><span style="display:flex;"><span>    public OrderManger()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public void Processing()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        new Stock().CheckAvailability(Products);
+</span></span><span style="display:flex;"><span>        new Payment().Processing(Customer,Products);
+</span></span><span style="display:flex;"><span>        new Shipment().SendProducts(Customer,Products);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><!-- raw HTML omitted -->若客戶想要增加Lie Pay 付款方法，要改多少Code?<!-- raw HTML omitted -->
+<strong>目前會有高耦合的問題</strong></p>
+<h1 id="開放封閉原則ocp">開放封閉原則OCP</h1>
+<ul>
+<li>Software entities(classes,modules,functions,etc.) should be <!-- raw HTML omitted -->open for extension<!-- raw HTML omitted --> but <!-- raw HTML omitted -->closed for modification<!-- raw HTML omitted --></li>
+<li>軟體實體(類別、模組、函式等)應能<!-- raw HTML omitted -->開放擴充<!-- raw HTML omitted -->但<!-- raw HTML omitted -->封閉修改<!-- raw HTML omitted --></li>
+<li>藉由<!-- raw HTML omitted -->增加新的程式碼<!-- raw HTML omitted -->來擴充系統的功能，而不是藉由<!-- raw HTML omitted -->修改原本已經存在的程式碼<!-- raw HTML omitted -->來擴充系統</li>
+</ul>
+<h2 id="關於ocp的基本精神">關於OCP的基本精神</h2>
+<ul>
+<li>一個<strong>類別</strong>需要<!-- raw HTML omitted -->開放<!-- raw HTML omitted -->，意味者該類別可以被擴充!
+<ul>
+<li>可以透過<strong>繼承</strong>輕鬆做到</li>
+<li>C#還有<strong>擴充方法</strong>可以輕鬆擴充既有類別</li>
+</ul>
+</li>
+<li>一個<strong>類別</strong>需要<!-- raw HTML omitted -->封閉<!-- raw HTML omitted -->，意味者有其他人正在使用這個類別!
+<ul>
+<li>如果程式已經編譯，但又已經有人在使用原本的類別</li>
+<li>封閉修改可以有效避免未知的問題發生</li>
+</ul>
+</li>
+</ul>
+<h2 id="常見的設計問題-1">常見的設計問題</h2>
+<p><strong>耦合力過高，擴充不易</strong>
+<img src="https://i.imgur.com/NG8r1ND.png" alt=""></p>
+<h2 id="關於ocp的實作方式">關於OCP的實作方式</h2>
+<ul>
+<li>採用分離與相依的技巧(<!-- raw HTML omitted -->相依於抽象<!-- raw HTML omitted -->)
+<ul>
+<li>缺點:<strong>需要針對原有程式碼進行重構</strong>
+<img src="https://i.imgur.com/EO2wAh7.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p><strong>關於OCP的C#範例</strong>
+透過<strong>抽象類別</strong>限制其修改，並透過繼承開放擴充不同實作</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public abstract class DataProvider{
+</span></span><span style="display:flex;"><span>    public abstract int OpenConnection();
+</span></span><span style="display:flex;"><span>    public abstract int CloseConnection();
+</span></span><span style="display:flex;"><span>    public abstract int ExecuteCommand();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="https://i.imgur.com/4HyTBRZ.png" alt=""></p>
+<p><a href="https://www.youtube.com/watch?v=--msvWn7yeo&amp;list=PL2n1gsiehM6rGOhbuZ5lX3FtQ2R-u6kNO&amp;index=5">https://www.youtube.com/watch?v=--msvWn7yeo&amp;list=PL2n1gsiehM6rGOhbuZ5lX3FtQ2R-u6kNO&amp;index=5</a></p>
+<p>3分47</p>
+<h2 id="關於ocp的使用時機">關於OCP的使用時機</h2>
+<ul>
+<li>你既有的類別<!-- raw HTML omitted -->已經被清楚定義<!-- raw HTML omitted -->，處於一個<!-- raw HTML omitted -->強調穩定<!-- raw HTML omitted -->的狀態</li>
+<li>你<!-- raw HTML omitted -->需要擴充<!-- raw HTML omitted -->現有類別，<!-- raw HTML omitted -->加入新需求<!-- raw HTML omitted -->的屬性或方法</li>
+<li>你<!-- raw HTML omitted -->擔心<!-- raw HTML omitted -->修改現有程式碼會<!-- raw HTML omitted -->破壞現有系統<!-- raw HTML omitted -->的運作</li>
+<li>系統剛開始設計時就決定採用OCP模式
+<ul>
+<li>可以透過<!-- raw HTML omitted -->介面<!-- raw HTML omitted -->或<!-- raw HTML omitted -->抽象類別<!-- raw HTML omitted -->進行實作</li>
+</ul>
+</li>
+</ul>
+<h2 id="ocp討論事項">OCP討論事項</h2>
+<ul>
+<li>當您剛接受維護一份2年前的程式碼，你會怎樣做?
+<ul>
+<li>修改之前寫過的類別?</li>
+<li>擴充之前寫過的類別?</li>
+<li>直接修改舊有原始碼，會有哪些風險存在呢?</li>
+</ul>
+</li>
+<li>如何讓系統在<strong>擴充需求</strong>時更簡單、更容易、更安全?</li>
+<li>C#可以透過<!-- raw HTML omitted -->interface<!-- raw HTML omitted -->實踐OCP原則嗎?如何做到?</li>
+<li>如何進行<strong>抽象化設計</strong>?多少人用過C#<strong>抽象類別</strong>?</li>
+</ul>
+<hr>
+<p><strong>Q&amp;A:</strong>
+<strong>抽象類別跟Interface差別</strong>
+<!-- raw HTML omitted -->抽象類別 =&gt;可以包含實作(耦合度增加)<!-- raw HTML omitted --></p>
+<h2 id="notebook-練習情境-1">:notebook: <strong>練習情境</strong></h2>
+<p><strong>試者透過OCP原則重構程式碼</strong>
+<strong>若客戶想要增加Log輸出到檔案的功能，你會如何改寫程式碼?</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class AppEvent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void GenerateEvent(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Logger fooLogger  =new Logger();
+</span></span><span style="display:flex;"><span>        fooLogger.Log(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Logger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Log(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>沒學過SOLID的開發者，可能會這樣寫</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class AppEvent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void GenerateEvent(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Logger fooLogger  =new Logger();
+</span></span><span style="display:flex;"><span>        fooLogger.Log(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Logger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private readonly string _Target;
+</span></span><span style="display:flex;"><span>    public Logger(string target){_Target =target;}
+</span></span><span style="display:flex;"><span>    public void Log(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(_Targer == &#34;Console&#34;)
+</span></span><span style="display:flex;"><span>            Console.WriteLine(message);
+</span></span><span style="display:flex;"><span>        else if(_Target == &#34;File&#34;)
+</span></span><span style="display:flex;"><span>            File.WriteAllText(&#34;MyLog&#34;,message);
+</span></span><span style="display:flex;"><span>        else
+</span></span><span style="display:flex;"><span>            throw new NotImplementedException();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>此時，若又想要增加訊息傳送到遠端Web API或Storage呢?</strong></p>
+<hr>
+<ul>
+<li><strong>採用分離與相依的技巧</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public interface ILogger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    void Log(string message);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class ConsoleLogger:ILogger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Log(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class FileLogger:ILogger
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Log(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        File.WriteAllText(&#34;MyLog&#34;,message)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class AppEvent
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private readlony ILogger _Logger;
+</span></span><span style="display:flex;"><span>    public AppEvent(string loggerType)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        this._logger = LoggerFactory.CreateLogger(loggerType);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public void GenerateEvent(string message)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _Logger.Log(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class LoggerFactory
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static ILogger CreateLogger(string loggerType)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(loggerType ==&#34;Console&#34;)
+</span></span><span style="display:flex;"><span>            return new ConsoleLogger();
+</span></span><span style="display:flex;"><span>        else if(loggerType==&#34;File&#34;)
+</span></span><span style="display:flex;"><span>            return new FileLogger();
+</span></span><span style="display:flex;"><span>        else throw new NotImplementedException();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果要新增一個log，要新增一個class繼承Ilogger 在LoggerFactory增加</p>
+<h1 id="里氏替換原則lsp">里氏替換原則LSP</h1>
+<ul>
+<li><!-- raw HTML omitted -->Subtypes<!-- raw HTML omitted --> <!-- raw HTML omitted --><strong>must</strong><!-- raw HTML omitted --> be substitutable for their <!-- raw HTML omitted -->base types.<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->subtypes<!-- raw HTML omitted -->(衍生類別) = 類別</li>
+<li><!-- raw HTML omitted -->base types<!-- raw HTML omitted -->(基底類別) =介面、抽象類別、基底類別</li>
+</ul>
+</li>
+<li>子型別必須可替換為他的基底型別</li>
+<li>如果你的程式有採用<strong>繼承</strong>或<strong>介面</strong>，然後建立出幾個不同的<strong>衍生型別</strong>(Subtype)。在你的系統中只要是<strong>基底型別</strong>出現的地方，都可以用<strong>子型別</strong>來取代，而不會破壞程式原有的行為。</li>
+</ul>
+<h2 id="關於lsp的基本精神">關於LSP的基本精神</h2>
+<ul>
+<li>當實作繼承時，必須確保型別轉換後還能得到正確的結果
+<ul>
+<li>當每個<strong>衍生類別</strong>都可以正確地替換為<strong>基底類別</strong>，且程式在執行時不會有異常的情況(如發生執行時期例外)</li>
+<li>必須正確的實作<!-- raw HTML omitted -->繼承<!-- raw HTML omitted -->與<!-- raw HTML omitted -->多型<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+<h2 id="常見的設計問題-2">常見的設計問題</h2>
+<ul>
+<li>
+<p>不正確的實作繼承與多型</p>
+<ul>
+<li>第一版：沒有繼承，單純的計算矩形面積</li>
+<li>第二版：新增需求，增加Square類別(套用OCP原則)</li>
+<li>第三版：重構程式，正確套用LSP原則</li>
+</ul>
+</li>
+<li>
+<p>實作繼承時，在特定情況下發生執行時期錯誤(Runtime Error)</p>
+<ul>
+<li>範例程式</li>
+<li>違反LSP原則有時候較難發現</li>
+</ul>
+</li>
+</ul>
+<p><strong>第一版:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Rectangle o = new Rectangle();
+</span></span><span style="display:flex;"><span>    o.Width = 40;
+</span></span><span style="display:flex;"><span>    o.Height =50;
+</span></span><span style="display:flex;"><span>    LSPBehavior.GetArea(o).Dump();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Rectangle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public int Height{get;set;}
+</span></span><span style="display:flex;"><span>    public int Width{get;set;}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class LSPBehavior
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static int GetArea(Rectangle s)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(s.Width&gt;20)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            s.Width = 20;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        return s.Width * s.Height;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>第二版(OCP原則):</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Square o = new Square();
+</span></span><span style="display:flex;"><span>    o.Width = 40;
+</span></span><span style="display:flex;"><span>    //o.Height =40;
+</span></span><span style="display:flex;"><span>    LSPBehavior.GetArea(o).Dump();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Rectangle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public int Height{get;set;}
+</span></span><span style="display:flex;"><span>    public int Width{get;set;}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Square:Rectangle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private int _height;
+</span></span><span style="display:flex;"><span>    private int _width;
+</span></span><span style="display:flex;"><span>    public int Height
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        get{return _height;}
+</span></span><span style="display:flex;"><span>        set{_height = _width =value;}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int Width
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        get{return _width;}
+</span></span><span style="display:flex;"><span>        set{_width = _height =value;}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class LSPBehavior
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static int GetArea(Rectangle s)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(s.Width&gt;20)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            s.Width = 20;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        return s.Width * s.Height;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><!-- raw HTML omitted --><strong>答案會是多少?</strong><!-- raw HTML omitted --></p>
+<p><strong>第二版不符合LSP</strong></p>
+<p><strong>第三版(LSP):</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Square o = new Square();
+</span></span><span style="display:flex;"><span>    o.Width = 40;
+</span></span><span style="display:flex;"><span>    //o.Height =40;
+</span></span><span style="display:flex;"><span>    LSPBehavior.GetArea(o).Dump();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Rectangle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public virtual int Height{get;set;}
+</span></span><span style="display:flex;"><span>    public virtual int Width{get;set;}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Square:Rectangle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private int _height;
+</span></span><span style="display:flex;"><span>    private int _width;
+</span></span><span style="display:flex;"><span>    public override int Height
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        get{return _height;}
+</span></span><span style="display:flex;"><span>        set{_height = _width =value;}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override int Width
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        get{return _width;}
+</span></span><span style="display:flex;"><span>        set{_width = _height =value;}
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class LSPBehavior
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public static int GetArea(Rectangle s)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        if(s.Width&gt;20)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            s.Width = 20;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        return s.Width * s.Height;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>善用virtual &amp; override</strong></p>
+<hr>
+<p>第二個例子(不符合LSP)
+<img src="https://i.imgur.com/TFpAK4b.png" alt="">
+<img src="https://i.imgur.com/K1cnpgY.png" alt="">
+<img src="https://i.imgur.com/uGsEAqk.png" alt="">
+<img src="https://i.imgur.com/fQhoapU.png" alt="">
+<img src="https://i.imgur.com/oYuwnSY.png" alt="">
+有沒有人這樣解決
+<img src="https://i.imgur.com/PB3NJYv.png" alt=""></p>
+<p>修正(符合LSP)
+<img src="https://i.imgur.com/J8yvagG.png" alt="">
+<img src="https://i.imgur.com/3xdX7oW.png" alt="">
+<img src="https://i.imgur.com/BQzrAqh.png" alt="">
+<img src="https://i.imgur.com/AHZfosj.png" alt="">
+優點:這樣在編譯時期就可以看出錯誤</p>
+<h2 id="關於lsp的實作">關於LSP的實作</h2>
+<ul>
+<li>採用<!-- raw HTML omitted -->類別繼承方式<!-- raw HTML omitted -->來進行開發
+<ul>
+<li>須注意繼承的實作方式</li>
+</ul>
+</li>
+<li>採用<!-- raw HTML omitted -->合約設計方式<!-- raw HTML omitted -->來進行開發
+<ul>
+<li>利用<!-- raw HTML omitted -->介面<!-- raw HTML omitted -->(<!-- raw HTML omitted -->interface<!-- raw HTML omitted -->)來定義基底型別(base type)</li>
+</ul>
+</li>
+</ul>
+<h2 id="關於lsp的使用時機">關於LSP的使用時機</h2>
+<ul>
+<li>當你需要透過<!-- raw HTML omitted -->基底型別<!-- raw HTML omitted -->對<!-- raw HTML omitted -->多型<!-- raw HTML omitted -->物件進行操作時</li>
+</ul>
+<h2 id="lsp討論事項">LSP討論事項</h2>
+<ul>
+<li>在教導新人時，如何有效的避免繼承的錯誤實作?</li>
+<li>你會用<!-- raw HTML omitted -->抽象類別、類別<!-- raw HTML omitted -->或<!-- raw HTML omitted -->介面<!-- raw HTML omitted --> 來實現LSP原則? 為什麼?</li>
+</ul>
+<h1 id="介面隔離原則isp">介面隔離原則ISP</h1>
+<ul>
+<li>
+<p>A:Many <!-- raw HTML omitted -->client specific interfaces<!-- raw HTML omitted --> are <!-- raw HTML omitted -->better than<!-- raw HTML omitted -->  <!-- raw HTML omitted -->one heneral purpose interface.<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>B:Clients <!-- raw HTML omitted -->should not<!-- raw HTML omitted --> be <!-- raw HTML omitted -->forced<!-- raw HTML omitted --> to depend upon <!-- raw HTML omitted -->interface<!-- raw HTML omitted --> that <!-- raw HTML omitted -->they don&rsquo;t use.<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>A:多個<!-- raw HTML omitted -->用戶端專用的介面<!-- raw HTML omitted -->優於一個<!-- raw HTML omitted -->通用需求介面<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>B:<!-- raw HTML omitted -->用戶端<!-- raw HTML omitted -->不應該強迫相依於<!-- raw HTML omitted -->沒用到的介面<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>針對不同需求的<strong>用戶端</strong>，僅開放其對應需求的介面就好</p>
+</li>
+</ul>
+<h2 id="關於isp的基本精神">關於ISP的基本精神</h2>
+<ul>
+<li>把不同需求的屬性與方法，放在不同的介面中
+<ul>
+<li>不要讓你的<!-- raw HTML omitted -->interface<!-- raw HTML omitted -->包山包海</li>
+<li>特定需求沒用到的地方，不要加到介面中，另外建一個</li>
+<li>可以拿<!-- raw HTML omitted -->interface<!-- raw HTML omitted -->當成群組來用(屬性與方法)</li>
+</ul>
+</li>
+<li>使得系統可以更容易的達成<!-- raw HTML omitted -->鬆散耦合、安全重構、功能擴充<!-- raw HTML omitted --></li>
+</ul>
+<h2 id="常見的設計問題-3">常見的設計問題</h2>
+<ul>
+<li>將所有<strong>API</strong>需求都定義在一個超大介面中</li>
+<li><strong>用戶端</strong>相依於一堆<strong>用不到</strong>得介面方法
+<ul>
+<li>如果多個類別已經實作同一個<strong>胖介面</strong></li>
+<li>就會導致某些別實作出<strong>用戶端用不到</strong>的方法</li>
+<li>這時應該可以拆分多的用戶端專用的介面進行實作</li>
+<li>所以一個實作介面的類別，不應該強迫去實作出這個類別<!-- raw HTML omitted -->不需要<!-- raw HTML omitted -->的方法(備註:這裡的<strong>不需要</strong>是指<strong>用戶端不需要</strong>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="關於isp的使用時機">關於ISP的使用時機</h2>
+<ul>
+<li>當介面需要被分割的時候</li>
+<li>類別的使用時機可以被切割的時候
+<ul>
+<li>假設類別有20個方法，並實作一個15個方法的介面</li>
+<li>有某個<strong>用戶端</strong>只會使用該類別中的10個方法</li>
+<li>你就可以為這類別的10個方法定義介面並設定實作介面</li>
+<li>你的<strong>用戶端</strong>就可以改用<strong>介面</strong>操作</li>
+<li>這個過程也可以用來降低主程式與這個類別的耦合力</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>有沒有符合ISP精神?</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console.Writenline(&#34;\n\nOpen Close Principle Demo &#34;);
+</span></span><span style="display:flex;"><span>    DataProvider DataProviderObject = new SqlDataProvider();
+</span></span><span style="display:flex;"><span>    DataProviderObject.OpenProviderObject();
+</span></span><span style="display:flex;"><span>    DataProviderObject.ExcuteCommand();
+</span></span><span style="display:flex;"><span>    DataProviderObject.CloseConnection();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface DataProvider
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    int OpenConnection();
+</span></span><span style="display:flex;"><span>    int CloseConnection();
+</span></span><span style="display:flex;"><span>    int ExcuteCommand();
+</span></span><span style="display:flex;"><span>    int BeginTransation();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class SqlDataProvider:DataProvider
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public int OpenConnection()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        \nSql Connection opened successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int CloseConnection()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql Connection Close successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int ExecuteCommand()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql Command Executed successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int BeginTransaction()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql BeginTransaction successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><!-- raw HTML omitted --><strong>Q&amp;A:沒有 BeginTransaction沒用到</strong><!-- raw HTML omitted --></p>
+<hr>
+<p><strong>修正版:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console.Writenline(&#34;\n\nOpen Close Principle Demo &#34;);
+</span></span><span style="display:flex;"><span>    DataProvider DataProviderObject = new SqlDataProvider();
+</span></span><span style="display:flex;"><span>    DataProviderObject.OpenProviderObject();
+</span></span><span style="display:flex;"><span>    DataProviderObject.ExcuteCommand();
+</span></span><span style="display:flex;"><span>    DataProviderObject.CloseConnection();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface DataProviderWithoutTransaction
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    int OpenConnection();
+</span></span><span style="display:flex;"><span>    int CloseConnection();
+</span></span><span style="display:flex;"><span>    int ExcuteCommand();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface DataProvider:DataProviderWithoutTransaction
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    int BeginTransaction();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class SqlDataProvider:DataProvider
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public int OpenConnection()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        \nSql Connection opened successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int CloseConnection()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql Connection Close successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int ExecuteCommand()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql Command Executed successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public int BeginTransaction()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;
+</span></span><span style="display:flex;"><span>        Sql BeginTransaction successfully&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="isp-討論事項">ISP 討論事項</h2>
+<ul>
+<li>你工作中是否有設計過<strong>超大介面</strong>的經驗?</li>
+<li>設計介面的時候，介面的大小應該如何判斷?如何群組?</li>
+<li>介面可以實作介面，使用的時機為何?</li>
+</ul>
+<p>例子2
+<img src="https://i.imgur.com/Xm9CUDJ.png" alt="">
+需求變了
+由用戶端來選擇要用的interface
+<img src="https://i.imgur.com/DPdX1FY.png" alt="">
+<img src="https://i.imgur.com/nWNC0Cr.png" alt=""></p>
+<p>例子3
+main 跟多少型別發生相依
+Q&amp;A:兩個
+<img src="https://i.imgur.com/NcCeHZ8.png" alt=""></p>
+<p>例子4
+<img src="https://i.imgur.com/55gLW1h.png" alt="">
+<img src="https://i.imgur.com/0LGclxv.png" alt=""></p>
+<h1 id="相依反轉原則dip">相依反轉原則DIP</h1>
+<ul>
+<li>
+<p>A.<!-- raw HTML omitted -->Hight-level modules<!-- raw HTML omitted --> should <!-- raw HTML omitted -->not <!-- raw HTML omitted -->depend on <!-- raw HTML omitted -->low-level modules<!-- raw HTML omitted -->.Both should <!-- raw HTML omitted -->depend on abstractions.<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>B.<!-- raw HTML omitted -->Abstractions<!-- raw HTML omitted --> should <!-- raw HTML omitted -->not<!-- raw HTML omitted --> depend on <!-- raw HTML omitted -->details.Details<!-- raw HTML omitted --> should <!-- raw HTML omitted -->depend on abstractions.<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>A.<!-- raw HTML omitted -->高階模組<!-- raw HTML omitted -->不應該依賴於<!-- raw HTML omitted -->低階模組<!-- raw HTML omitted -->，兩者都應<!-- raw HTML omitted -->相依於抽象<!-- raw HTML omitted --></p>
+<ul>
+<li>高階模組=&gt;Caller(呼叫端)</li>
+<li>低階模組=&gt;Callee(被呼叫端)</li>
+</ul>
+</li>
+<li>
+<p>B.<!-- raw HTML omitted -->抽象<!-- raw HTML omitted -->不應該相依於<!-- raw HTML omitted -->細節<!-- raw HTML omitted -->，而<!-- raw HTML omitted --><!-- raw HTML omitted -->細節則應該<!-- raw HTML omitted -->相依於抽象<!-- raw HTML omitted --></p>
+</li>
+</ul>
+<h2 id="關於dip的基本精神">關於DIP的基本精神</h2>
+<ul>
+<li>所有類別都要相依於抽象，而不是具體實作
+<ul>
+<li>可透過<!-- raw HTML omitted -->DI Container<!-- raw HTML omitted -->達到目的</li>
+</ul>
+</li>
+<li>為了要達到類別間鬆散耦合的目的
+<ul>
+<li>開發過程中，所有<strong>類別之間</strong>的<strong>耦合關係</strong>一律透過<strong>抽象介面</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="常見的設計問題-4">常見的設計問題</h2>
+<ul>
+<li>類別與類別之間緊密耦合，改A壞B的狀況層出不窮
+<img src="https://i.imgur.com/Jy3FJJC.png" alt=""></li>
+</ul>
+<p>什麼是相依反轉?
+<img src="https://i.imgur.com/TMgkhwz.png" alt=""></p>
+<h2 id="關於dip的實作方式">關於DIP的實作方式</h2>
+<ul>
+<li>型別全部都相依於抽象，而不是具體實作</li>
+<li>經過套用DIP之後，原來有相依於類別的程式碼
+<ul>
+<li>都改成相依於<strong>抽象型別</strong></li>
+<li>從<strong>緊密耦合</strong>關係變成<strong>鬆散偶合</strong>關係</li>
+<li>可以依據需求，隨時<strong>抽換具體實作類別</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="關於dip的使用時機">關於DIP的使用時機</h2>
+<ul>
+<li>像要降低耦合的時候</li>
+<li>希望類別都相依於抽象，讓團隊可以<strong>更有效率</strong>的開發系統</li>
+<li>想要可以替換具體實作，讓系統變得更有彈性
+<ul>
+<li>符合DIP通常也意味者符合OCP與LSP原則</li>
+<li>只要再多考量SRP與ISP就很棒了!</li>
+</ul>
+</li>
+<li>想要導入<!-- raw HTML omitted -->TDD(測試驅動開發)<!-- raw HTML omitted -->或<!-- raw HTML omitted -->單元測試<!-- raw HTML omitted -->的時候</li>
+</ul>
+<h2 id="dip討論事項">DIP討論事項</h2>
+<ul>
+<li>你在工作中是否有遇過類似的設計方式?(相依注入)</li>
+<li>如果一個類別非常穩定，也沒有變更需求，需要套用DIP嗎?</li>
+<li>大量套用DIP有缺點嗎?</li>
+</ul>
+<h2 id="notebook-練習情境-2">:notebook: <strong>練習情境</strong></h2>
+<p><strong>請試者找出底下程式碼不符合 相依反轉原則地方</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class SecurityService
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public bool LoginUser(string userName,string password)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        LoginService service = new LoginService();
+</span></span><span style="display:flex;"><span>        return service.ValidateUser(userName,password);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class LoginService
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public bool ValidateUser(string userName,string password)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        throw new NotImplementedException();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>修正相依於抽象，使用建構式傳入具體實作物件</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class SecurityService
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    private readoly ILoginService _LoginService;
+</span></span><span style="display:flex;"><span>    public SecurityService(ILoginService loginService)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        this._LoginService =loginService;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        public bool LoginUser(string userName,string password)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return _LoginService.ValidateUser(userName,password);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    new SecurityService(new LoginService());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://as880074.github.io/tags/c" rel="tag" title="C#">#C##</a>
+    
+    <a href="https://as880074.github.io/tags/%e7%9b%b8%e4%be%9d%e6%80%a7%e6%b3%a8%e5%85%a5" rel="tag" title="相依性注入">#相依性注入#</a>
+    
+    <a href="https://as880074.github.io/tags/solid" rel="tag" title="SOLID">#SOLID#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://as880074.github.io/about/" rel="prev" title="T&amp;X">
+        T&amp;X <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
+<div class="disqus markdown">
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'nickchi';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      目錄
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      網站概覽
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://as880074.github.io/img/author.jpg"
+        alt="Nick Chi" />
+    <p class="site-author-name" itemprop="name">Nick Chi</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        Software Engineer</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://as880074.github.io/post/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">文章</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://as880074.github.io/categories/">      
+         
+        <span class="site-state-item-count">2</span>
+        
+        <span class="site-state-item-name">分類</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://as880074.github.io/tags/">
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">標籤</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/as880074/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://as880074.medium.com/" target="_blank" title="Medium">
+            <i class="fa fa-fw fa-google"></i>
+            Medium
+        </a>
+        </span>
+    
+</div>
+
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5b4f2ucxar6&amp;m=0&amp;s=220&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=35" async="async"></script>
+</div>
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#抽象abstraction">抽象(Abstraction)</a></li>
+    <li><a href="#封裝encapsulation">封裝(Encapsulation)</a></li>
+    <li><a href="#繼承inheritance">繼承(Inheritance)</a></li>
+    <li><a href="#多型polymorphism">多型(Polymorphism)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#何謂模組module">何謂&quot;模組&quot;(Module)</a></li>
+    <li><a href="#內聚力-cohesion">內聚力 Cohesion</a></li>
+    <li><a href="#耦合力-coupling">耦合力 Coupling</a></li>
+    <li><a href="#notebook-隨堂測驗">:notebook: <strong>隨堂測驗</strong></a></li>
+    <li><a href="#notebook-隨堂測驗-1">:notebook: <strong>隨堂測驗</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於srp的基本精神">關於SRP的基本精神</a></li>
+    <li><a href="#低內聚力的示意圖">低內聚力的示意圖</a></li>
+    <li><a href="#常見的設計問題">常見的設計問題</a></li>
+    <li><a href="#關於srp的使用時機">關於SRP的使用時機</a></li>
+    <li><a href="#srp討論事項">SRP討論事項</a></li>
+    <li><a href="#關於srp還需要注意的事">關於SRP還需要注意的事</a></li>
+    <li><a href="#notebook-練習情境">:notebook: <strong>練習情境</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於ocp的基本精神">關於OCP的基本精神</a></li>
+    <li><a href="#常見的設計問題-1">常見的設計問題</a></li>
+    <li><a href="#關於ocp的實作方式">關於OCP的實作方式</a></li>
+    <li><a href="#關於ocp的使用時機">關於OCP的使用時機</a></li>
+    <li><a href="#ocp討論事項">OCP討論事項</a></li>
+    <li><a href="#notebook-練習情境-1">:notebook: <strong>練習情境</strong></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於lsp的基本精神">關於LSP的基本精神</a></li>
+    <li><a href="#常見的設計問題-2">常見的設計問題</a></li>
+    <li><a href="#關於lsp的實作">關於LSP的實作</a></li>
+    <li><a href="#關於lsp的使用時機">關於LSP的使用時機</a></li>
+    <li><a href="#lsp討論事項">LSP討論事項</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於isp的基本精神">關於ISP的基本精神</a></li>
+    <li><a href="#常見的設計問題-3">常見的設計問題</a></li>
+    <li><a href="#關於isp的使用時機">關於ISP的使用時機</a></li>
+    <li><a href="#isp-討論事項">ISP 討論事項</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於dip的基本精神">關於DIP的基本精神</a></li>
+    <li><a href="#常見的設計問題-4">常見的設計問題</a></li>
+    <li><a href="#關於dip的實作方式">關於DIP的實作方式</a></li>
+    <li><a href="#關於dip的使用時機">關於DIP的使用時機</a></li>
+    <li><a href="#dip討論事項">DIP討論事項</a></li>
+    <li><a href="#notebook-練習情境-2">:notebook: <strong>練習情境</strong></a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2009 - 2022</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">T&amp;X</span>
+  <span id="busuanzi_container_site_pv">
+    總瀏覽<span id="busuanzi_value_site_pv"></span>次
+  </span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.97.2</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://as880074.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://as880074.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+
+
+
+    <script src="https://as880074.github.io/js/clipboard.js"></script>
+
+</body>
+</html>
