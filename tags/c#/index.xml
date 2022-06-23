@@ -6,7 +6,16 @@
     <description>Recent content in C# on T&amp;X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://as880074.github.io/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://as880074.github.io/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# 開發實戰：非同步程式開發技巧-名詞介紹</title>
+      <link>https://as880074.github.io/post/technical/20220623/threaddefinition/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://as880074.github.io/post/technical/20220623/threaddefinition/</guid>
+      <description>名詞介紹 Concurrent computing vs. Parallel computing 建議用英文溝通，因為大陸跟台灣中文翻譯不一樣，大陸的Parallel computing翻譯成並行計算 並行計算 (Concurrent computing) 數個運算工</description>
+    </item>
+    
     <item>
       <title>SOLID</title>
       <link>https://as880074.github.io/post/technical/20220520/solid/</link>

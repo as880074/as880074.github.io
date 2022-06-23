@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>C# 開發實戰：非同步程式開發技巧-名詞介紹 - T&amp;X</title>
+    <meta name="keywords" content="T&amp;X,架構師,軟體開發,部落客,工程師,架構師,個人,財經,區塊鏈,筆記,技術,分享,C#">
+    
+    <meta property="og:title" content="C# 開發實戰：非同步程式開發技巧-名詞介紹">
+    <meta property="og:site_name" content="T&amp;X">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="C# 開發實戰：非同步程式開發技巧-名詞介紹 - T&amp;X" />
+    <meta name="description" content="T&amp;X | 軟體 | 架構 | Csharp | 區塊鏈 | 財經"> 
+    
+    <link rel="shortcut icon" href="https://as880074.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://as880074.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://as880074.github.io/img/apple-touch-icon.png" />
+    <link href="https://as880074.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://as880074.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="text/javascript" id="hexo.configuration">
+    "\u003cscript data-ad-client=\"wwwww\"  \r\n async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"\u003e\u003c/script\u003e"
+  
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+
+  
+</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <meta content="" name="keywords">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://as880074.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">T&amp;X</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">玩出新世界</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/categories/%E6%8A%80%E8%A1%93/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />技術
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歷年文章
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://as880074.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />關於
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-"></i> <br />
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> 搜尋</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+      
+        
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7NEGYFK0G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H7NEGYFK0G');
+</script>
+      
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://as880074.github.io/post/technical/20220623/threaddefinition/" itemprop="url">
+        C# 開發實戰：非同步程式開發技巧-名詞介紹
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">時間：</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="232323-00-06">
+    232323-00-06
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">分類：</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://as880074.github.io/categories/%E6%8A%80%E8%A1%93" itemprop="url" rel="index">
+        <span itemprop="name">技術</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://as880074.github.io/categories/%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%A8%8B%E5%BC%8F" itemprop="url" rel="index">
+        <span itemprop="name">非同步程式</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">閱讀：</span>
+<span class="leancloud-visitors-count">2162 字 ~5分鐘</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <h1 id="名詞介紹">名詞介紹</h1>
+<h2 id="concurrent-computing-vs-parallel-computing">Concurrent computing vs. Parallel computing</h2>
+<blockquote>
+<p>建議用英文溝通，因為大陸跟台灣中文翻譯不一樣，大陸的Parallel computing翻譯成並行計算</p>
+</blockquote>
+<ul>
+<li>並行計算 (Concurrent computing)
+<ul>
+<li>數個運算工作<!-- raw HTML omitted -->同時<!-- raw HTML omitted -->在<strong>特定時間區段</strong>內<strong>交替地完成</strong>，而<strong>非依序執行</strong></li>
+<li>a form of computing in which several computations are executed during <strong>overlapping time periods</strong> <!-- raw HTML omitted -->concurrently<!-- raw HTML omitted --> instead of <strong>sequentially</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/tdlarOm.png" alt=""></p>
+<ul>
+<li>平行計算 (Parallel computing)
+<ul>
+<li>許多運算過程會<!-- raw HTML omitted -->同時發生<!-- raw HTML omitted --></li>
+<li>a type of computation in which many calculations or the execution of processes are carried out <!-- raw HTML omitted -->simultaneously<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/NI0ZZBE.png" alt=""></p>
+<h2 id="io-bound-vs-cpu-bound">IO Bound VS CPU Bound</h2>
+<ul>
+<li><strong>IO Bound</strong>
+<ul>
+<li>如果你的程式需要透過 I/O 進行存取，就屬於 IO Bound 的非同步工作</li>
+<li>例如：從網路上取得一份資料、呼叫 API、存取資料庫、讀寫檔案</li>
+<li>由於存取 I/O 的過程可能會<strong>閒置 CPU 運作</strong>，過程可能會導致 CPU 資源被浪費</li>
+<li><strong>這種類型的應用</strong>非常適合採用<strong>非同步開發</strong>來解決<!-- raw HTML omitted -->資源浪費<!-- raw HTML omitted -->的問題！</li>
+<li>💡 <strong>應多利用 <!-- raw HTML omitted -->await<!-- raw HTML omitted --> 來等待非同步執行</strong></li>
+</ul>
+</li>
+<li><strong>CPU Bound</strong>
+<ul>
+<li>如果你的程式需要進行相當繁重的 CPU 計算工作，就屬於 CPU Bound 的非同步工作</li>
+<li>例如：圖片轉換處理、處理大量數據計算</li>
+<li>由於 CPU 大量運算的情況，應用程式可能會處於「<strong>無法回應</strong>」的狀態</li>
+<li><strong>這種類型的應用</strong>非常適合採用<strong>非同步開發</strong>來解決<!-- raw HTML omitted -->響應性<!-- raw HTML omitted -->的問題！</li>
+<li>💡 <strong>應多利用 <!-- raw HTML omitted -->TPL<!-- raw HTML omitted --> (<a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl?WT.mc_id=DT-MVP-4015686">Task Parallel Library</a>) 來實現非同步 (<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.threading.tasks.parallel.foreach?view=net-6.0">Parallel.ForEach</a> 或 <a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.threading.tasks.task.run?view=net-6.0">Task.Run</a>)</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="計算機架構相關名詞">計算機架構相關名詞</h2>
+<p><img src="https://i.imgur.com/1lt2Qhz.png" alt=""></p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8">中央處理器</a> (<a href="https://en.wikipedia.org/wiki/Central_processing_unit">CPU</a>)
+<ul>
+<li><strong>C</strong>entral <strong>P</strong>rocessing <strong>U</strong>nit</li>
+<li>Processors (處理器)</li>
+<li>Sockets (實體插槽)</li>
+<li>Cores (實體核心)</li>
+<li>Logical processors (邏輯核心)</li>
+</ul>
+</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E5%9F%B7%E8%A1%8C%E7%B7%92">超執行緒</a><a href="https://en.wikipedia.org/wiki/Hyper-threading">(HT)</a>
+<ul>
+<li><strong>H</strong>yper-<strong>T</strong>hreading <strong>T</strong>echnology (HTT)</li>
+<li>Intel 專利的 <a href="https://en.wikipedia.org/wiki/Simultaneous_multithreading">SMT</a> 技術
+<ul>
+<li>SMT = Simultaneous MultiThreading</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Scalar_processor">Scalar processor</a> vs. <a href="https://en.wikipedia.org/wiki/Superscalar_processor">Superscalar processor</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="作業系統相關">作業系統相關</h2>
+<p><img src="https://i.imgur.com/a1wkQfU.png" alt=""></p>
+<ul>
+<li>
+<p>電腦程式 (<a href="https://en.wikipedia.org/wiki/Computer_program">Program</a>)</p>
+<ul>
+<li>包含<strong>一系列指令</strong> (a sequence of instructions) 用來讓電腦運作的檔案</li>
+</ul>
+</li>
+<li>
+<p>執行 (<a href="https://en.wikipedia.org/wiki/Execution_(computing)">Execution</a>)</p>
+<ul>
+<li>將<strong>電腦程式中</strong>的所有指令<strong>載入到記憶體</strong> (RAM) 並建立<strong>處理程序</strong>的流程</li>
+</ul>
+</li>
+<li>
+<p><!-- raw HTML omitted --><strong>處理程序</strong><!-- raw HTML omitted --> (<a href="https://en.wikipedia.org/wiki/Process_(computing)">Process</a>)</p>
+<ul>
+<li><strong>電腦程式</strong>的<strong>實體</strong> (instance of a computer program) (一台電腦可以同時執行多個相同的電腦程式)</li>
+<li><strong>作業系統</strong>可能會使用<strong>一個</strong>到<strong>多個</strong><!-- raw HTML omitted -->執行緒<!-- raw HTML omitted -->來執行電腦程式中的指令 (instructions)</li>
+</ul>
+</li>
+<li>
+<p><!-- raw HTML omitted --><strong>執行緒</strong><!-- raw HTML omitted --> (<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B">Thread</a>)</p>
+<ul>
+<li>由<a href="https://en.wikipedia.org/wiki/Operating_system">作業系統</a>透過<strong>排程器</strong>(<a href="https://en.wikipedia.org/wiki/Scheduling_(computing)">Scheduler</a>)分配<strong>執行</strong>在電腦程式中<strong>一系列指令</strong>的<strong>最小單位</strong></li>
+<li>區分 <strong>Kernel threads</strong> 與 <strong>User threads</strong> 兩種，負責不同類型的執行任務</li>
+</ul>
+</li>
+<li>
+<p>排程器 (<a href="https://en.wikipedia.org/wiki/Scheduling_(computing)">Scheduling</a>)</p>
+<ul>
+<li><strong>排程器</strong>是作業系統的一個重要元件，用來安排「<strong>資源</strong>」來執行「<strong>工作</strong>」</li>
+<li><strong>資源</strong>包含處理器 (Processor)、核心(Core)、網路、&hellip; 等等。</li>
+<li><strong>工作</strong>包含執行緒(<a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B">Thread</a>)、處理程序(<a href="https://en.wikipedia.org/wiki/Process_(computing)">Process</a>)、傳輸網路封包 (<a href="https://en.wikipedia.org/wiki/Traffic_flow_(computer_networking)">Traffic flow</a>)、&hellip; 等等。</li>
+</ul>
+</li>
+<li>
+<p>先佔式任務處理 (<a href="https://en.wikipedia.org/wiki/Preemption_(computing)">Preemption</a>)</p>
+<ul>
+<li>這是一種<strong>多工</strong>(<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86">Multi-Tasking</a>)的實現方式。<strong>多工</strong>是指電腦同時執行多個程式的能力！</li>
+<li><strong>先佔式任務處理</strong>會中斷正在執行中的<strong>執行緒</strong>，並會在<strong>未來的一段時間</strong>後<strong>繼續執行</strong></li>
+</ul>
+</li>
+<li>
+<p>內容切換 (<a href="https://en.wikipedia.org/wiki/Context_switch">Context Switching</a>)</p>
+<ul>
+<li>由於<strong>先佔式任務處理</strong>會中斷正在執行中的<strong>執行緒</strong>，在執行緒之間反覆切換的過程叫做<strong>內容切換</strong></li>
+<li>Windows / macOS / Linux / AIX / BSD / Solaris 皆採用<strong>先佔式多工</strong> (<a href="https://en.wikipedia.org/wiki/Preemption_(computing)##PREEMPTIVE">Preemptive Multitasking</a>)，一個執行緒執行程式時間用完了，系統就會進行 Context Switch，把 CPU 分配給下一個執行緒，沒有一個程式能獨佔 CPU 時間！</li>
+</ul>
+</li>
+<li>
+<p>多工處理 (<a href="https://en.wikipedia.org/wiki/Computer_multitasking">Multi-Tasking</a>)</p>
+<ul>
+<li><strong>多工</strong>是指電腦同時執行多個程式的能力</li>
+<li>多工的一般方法是執行第一個程式的一段代碼，儲存工作環境；再執行第二個程式的一段代碼，儲存環境；……恢復第一個程式的工作環境，執行第一個程式的下一段代碼……現代的多工，每個程式的時間分配相對平均。</li>
+</ul>
+</li>
+<li>
+<p>多執行緒 (<a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)">Multithreading</a>)</p>
+<ul>
+<li><strong>多執行緒</strong>是一種利用<strong>單一核心</strong>來提供<strong>多工處理</strong>的能力，用來提供<strong>同時執行</strong>多條執行緒的工作方式，而這種能力通常都是由<strong>作業系統</strong>內建提供的。</li>
+<li>在多執行緒的應用程式中，執行緒會共用一個或多個核心，而共用的資源包含運算單元、CPU 快取或 <a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> (translation lookaside buffer) 等資源。</li>
+<li>新一代的 CPU 基本上都有提供<strong>硬體多執行緒</strong>的支援，能夠在<strong>同一時間執行多於一個執行緒</strong>，進而提升整體處理效能</li>
+</ul>
+</li>
+</ul>
+<h2 id="program-vs-process-vs-threadscheduling-preemption-context-switching">Program vs. Process vs. ThreadScheduling, Preemption, Context Switching</h2>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Concepts-_Program_vs._Process_vs._Thread.jpg/1024px-Concepts-_Program_vs._Process_vs._Thread.jpg" alt=""></p>
+<p><a href="https://en.wikipedia.org/wiki/Thread_(computing)">https://en.wikipedia.org/wiki/Thread_(computing)</a></p>
+<h2 id="相關名詞">相關名詞</h2>
+<ul>
+<li>
+<p>同步 (<a href="https://en.wikipedia.org/wiki/Synchronization">Synchronous</a>)</p>
+<ul>
+<li>在計算機的世界裡，沒有什麼程式是真的「同步」的。</li>
+<li><strong>同步</strong>通常是指在<strong>一個系統</strong>中所<strong>發生的事件之間</strong>進行<strong>協調</strong> (coordination of events)，讓時間上出現    <strong>一致性</strong>與<strong>統一化</strong>的現象，讓整件事看起來像是<strong>依序執行</strong>的結果。</li>
+</ul>
+</li>
+<li>
+<p>非同步 (<a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">Asynchronous</a>)</p>
+<ul>
+<li><strong>非同步</strong>意味著在<strong>一個系統</strong>中所<strong>發生的事件</strong> (occurrence of events) 都可以<strong>獨立執行</strong>，並且提供<strong>一些方法</strong>來處理這些事件。</li>
+<li>這些<strong>發生的事件</strong>不會<strong>封鎖</strong>(Block)<strong>主程式</strong>的<strong>執行緒</strong>，因此可以<strong>多個工作</strong>進行<strong>平行處理</strong></li>
+</ul>
+</li>
+<li>
+<p><a href="https://hackmd.io/ssCoAOqVThCEivKXNX88Yw?view">同步化</a> (<a href="https://en.wikipedia.org/wiki/Synchronization">Synchronization</a>)</p>
+<ul>
+<li>當<strong>多執行緒</strong>需要<strong>同時存取共用資源</strong>時，所需進行的<strong>管控機制</strong>，確保程式執行時可以得到<strong>預期結果</strong></li>
+<li>跨執行緒的同步化： <a href="https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/statements/lock?WT.mc_id=DT-MVP-4015686">lock</a>, <a href="https://docs.microsoft.com/zh-tw/dotnet/standard/threading/spinlock?WT.mc_id=DT-MVP-4015686">SpinLock</a>, <a href="https://docs.microsoft.com/zh-tw/dotnet/standard/threading/mutexes?WT.mc_id=DT-MVP-4015686">Mutex</a>, <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim?view=net-6.0">ReaderWriterLockSlim</a>, <a href="https://docs.microsoft.com/zh-tw/dotnet/standard/threading/barrier?WT.mc_id=DT-MVP-4015686">Barrier</a>, <a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/countdownevent?WT.mc_id=DT-MVP-4015686">CountdownEvent</a>, &hellip;</li>
+<li>跨處理程序同步化：<a href="https://docs.microsoft.com/zh-tw/dotnet/standard/threading/mutexes?WT.mc_id=DT-MVP-4015686">Mutex</a>, <a href="https://docs.microsoft.com/zh-tw/dotnet/standard/threading/semaphore-and-semaphoreslim?WT.mc_id=DT-MVP-4015686">Semaphore</a> (Windows), <a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/eventwaithandle?WT.mc_id=DT-MVP-4015686">EventWaitHandle</a> (Windows)</li>
+<li>相關文章：<a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives?WT.mc_id=DT-MVP-4015686">Overview of synchronization primitives</a></li>
+</ul>
+</li>
+<li>
+<p>執行緒安全 (<a href="https://en.wikipedia.org/wiki/Thread_safety">Thread-safety</a>)</p>
+<ul>
+<li>在<strong>多執行緒</strong>環境下執行程式，用以確保執行可以得到<strong>預期執行結果</strong>！</li>
+<li>實現<strong>執行緒安全</strong>的<strong>必要條件</strong>就是必須能夠提供<strong>同步化</strong>機制！</li>
+</ul>
+</li>
+<li>
+<p>同步內容 (<a href="https://docs.microsoft.com/zh-tw/dotnet/api/system.threading.synchronizationcontext?view=netframework-4.7.2">SynchronizationContext</a>)</p>
+<ul>
+<li>允許執行緒透過將<strong>工作單元</strong>(Work of Unit)進行封裝(<a href="https://zh.wikipedia.org/wiki/Marshalling_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">Marshal</a>)之後，傳遞給其他執行緒</li>
+</ul>
+</li>
+<li>
+<p>競爭狀態 (<a href="https://en.wikipedia.org/wiki/Race_condition">Race Condition</a>)</p>
+<ul>
+<li>競爭情形是一種錯誤，這種錯誤是指根據兩個或多個執行緒之中，哪一個先到達程式碼的特定區塊而決定程式的結果。</li>
+<li>執行程式多次會產生不同的結果，並且無法預測任何指定的執行結果。</li>
+</ul>
+</li>
+<li>
+<p>關鍵區段 (<a href="https://en.wikipedia.org/wiki/Critical_section">Critical Section</a>)</p>
+<ul>
+<li>是<strong>一段程式碼<!-- raw HTML omitted -->不允許<!-- raw HTML omitted -->多執行緒<!-- raw HTML omitted -->同時執行<!-- raw HTML omitted --></strong></li>
+<li>為了<strong>避免資源競爭</strong>的情況發生 (<a href="https://en.wikipedia.org/wiki/Race_condition">Race Condition</a>)</li>
+</ul>
+</li>
+<li>
+<p>死結 (<a href="https://en.wikipedia.org/wiki/Deadlock">Deadlock</a>)</p>
+<ul>
+<li>當<strong>兩個以上</strong>的<strong>執行緒</strong>，<strong>雙方都在等待</strong>對方停止執行，以取得系統資源，但是沒有一方會先結束。
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Deadlock_at_a_four-way-stop.gif/220px-Deadlock_at_a_four-way-stop.gif" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="net程式啟動流程">.NET程式啟動流程</h2>
+<ul>
+<li>.NET <strong>處理程序(Process)<strong>啟動後，僅會有</strong><!-- raw HTML omitted -->一個<!-- raw HTML omitted -->前景執行緒</strong>！
+<ul>
+<li>每個<strong>執行程序</strong>都可以<strong>產生</strong>出許多<strong>前景執行緒</strong>或<strong>背景執行緒</strong></li>
+</ul>
+</li>
+<li><strong>前景執行緒 (Foreground Thread)</strong>
+<ul>
+<li>所有<strong>前景執行緒</strong>必須<strong>全部結束</strong>執行，否則<strong>處理程序</strong>無法結束執行</li>
+<li>無論是否還有<strong>背景執行緒</strong>在執行，沒有<strong>前景執行緒</strong>在跑，該<strong>處理程序</strong>就一定會結束</li>
+<li>new Thread() 預設就是<strong>前景執行緒</strong></li>
+</ul>
+</li>
+<li><strong>背景執行緒 (Background Thread)</strong>
+<ul>
+<li>new Task() 預設就是<strong>背景執行緒</strong></li>
+<li>從<strong>執行緒集區</strong>(Thread Pool)取得的<strong>執行緒</strong>，一定是<strong>背景執行緒</strong></li>
+<li><!-- raw HTML omitted --><strong>Task.Run</strong> 從執行緒集區取得一個執行緒，因此是<strong>背景執行緒</strong><!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><strong>主執行緒(main Thread)</strong>
+<ul>
+<li>程序啟動時的第一個執行緒</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.albahari.com/threading/">https://www.albahari.com/threading/</a></p>
+<p><a href="https://source.dot.net/">https://source.dot.net/</a></p>
+
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://as880074.github.io/tags/c" rel="tag" title="C#">#C##</a>
+    
+    <a href="https://as880074.github.io/tags/%e9%9d%9e%e5%90%8c%e6%ad%a5%e7%a8%8b%e5%bc%8f" rel="tag" title="非同步程式">#非同步程式#</a>
+    
+    <a href="https://as880074.github.io/tags/async/await" rel="tag" title="async/await">#async/await#</a>
+    
+    <a href="https://as880074.github.io/tags/%e4%bf%9d%e5%93%a5%e8%aa%b2%e7%a8%8b" rel="tag" title="保哥課程">#保哥課程#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://as880074.github.io/post/technical/20220520/solid/" rel="prev" title="SOLID">
+        SOLID <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
+<div class="disqus markdown">
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'nickchi';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      目錄
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      網站概覽
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://as880074.github.io/img/author.jpg"
+        alt="Nick Chi" />
+    <p class="site-author-name" itemprop="name">Nick Chi</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        Software Engineer</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://as880074.github.io/post/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">文章</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://as880074.github.io/categories/">      
+         
+        <span class="site-state-item-count">3</span>
+        
+        <span class="site-state-item-name">分類</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://as880074.github.io/tags/">
+         
+        <span class="site-state-item-count">6</span>
+        
+        <span class="site-state-item-name">標籤</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/as880074/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://as880074.medium.com/" target="_blank" title="Medium">
+            <i class="fa fa-fw fa-google"></i>
+            Medium
+        </a>
+        </span>
+    
+</div>
+
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5b4f2ucxar6&amp;m=0&amp;s=220&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=35" async="async"></script>
+</div>
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#concurrent-computing-vs-parallel-computing">Concurrent computing vs. Parallel computing</a></li>
+    <li><a href="#io-bound-vs-cpu-bound">IO Bound VS CPU Bound</a></li>
+    <li><a href="#計算機架構相關名詞">計算機架構相關名詞</a></li>
+    <li><a href="#作業系統相關">作業系統相關</a></li>
+    <li><a href="#program-vs-process-vs-threadscheduling-preemption-context-switching">Program vs. Process vs. ThreadScheduling, Preemption, Context Switching</a></li>
+    <li><a href="#相關名詞">相關名詞</a></li>
+    <li><a href="#net程式啟動流程">.NET程式啟動流程</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2009 - 2022</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">T&amp;X</span>
+  <span id="busuanzi_container_site_pv">
+    總瀏覽<span id="busuanzi_value_site_pv"></span>次
+  </span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.97.2</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://as880074.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://as880074.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://as880074.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://as880074.github.io/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+
+
+
+</body>
+</html>

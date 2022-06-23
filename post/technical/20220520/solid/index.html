@@ -182,7 +182,7 @@
     <i class="fa fa-eye"></i>
 </span>
 <span class="post-meta-item-text">閱讀：</span>
-<span class="leancloud-visitors-count">6427 字 ~13分鐘</span>
+<span class="leancloud-visitors-count">6979 字 ~14分鐘</span>
 </span>
       </div>
     </header>
@@ -222,6 +222,9 @@
 對實作的細節進行&quot;封裝&quot;(隱藏、保護)</p>
 <p>第三步:
 透過&quot;繼承&quot;來重複利用、擴充和修改基底類別的定義</p>
+<hr>
+<p><strong>透過&quot;繼承&quot;來重複利用、擴充和修改基底類別的定義</strong>
+<img src="https://i.imgur.com/yfgmyAW.png" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class BaseClass
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  public string Name{get;set;}
@@ -244,8 +247,7 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>	public override void Output()=&gt;Console.WriteLine(&#34;Hello !!&#34;);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img src="https://i.imgur.com/IPcgyfV.png" alt=""></p>
-<p><strong>在C#中所有類都是&quot;多型&quot;</strong></p>
+</span></span></code></pre></div><p><strong>在C#中所有類都是&quot;多型&quot;</strong></p>
 <ul>
 <li>在設計時期(Design Time)
 <ul>
@@ -539,7 +541,7 @@
 </li>
 </ul>
 <h2 id="notebook-練習情境">:notebook: <strong>練習情境</strong></h2>
-<p>請示者找出OrderMannger類別，不符合 單一責任原則地方
+<p>請試者找出OrderMannger類別，不符合 單一責任原則地方
 請指出這個類別是否違反了SRP原則?
 請說明理由與如何改善</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class OrderManaer
@@ -625,14 +627,6 @@
 </ul>
 <p><strong>關於OCP的C#範例</strong>
 透過<strong>抽象類別</strong>限制其修改，並透過繼承開放擴充不同實作</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public abstract class DataProvider{
-</span></span><span style="display:flex;"><span>    public abstract int OpenConnection();
-</span></span><span style="display:flex;"><span>    public abstract int CloseConnection();
-</span></span><span style="display:flex;"><span>    public abstract int ExecuteCommand();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img src="https://i.imgur.com/4HyTBRZ.png" alt=""></p>
-<p><a href="https://www.youtube.com/watch?v=--msvWn7yeo&amp;list=PL2n1gsiehM6rGOhbuZ5lX3FtQ2R-u6kNO&amp;index=5">https://www.youtube.com/watch?v=--msvWn7yeo&amp;list=PL2n1gsiehM6rGOhbuZ5lX3FtQ2R-u6kNO&amp;index=5</a></p>
-<p>3分47</p>
 <h2 id="關於ocp的使用時機">關於OCP的使用時機</h2>
 <ul>
 <li>你既有的類別<!-- raw HTML omitted -->已經被清楚定義<!-- raw HTML omitted -->，處於一個<!-- raw HTML omitted -->強調穩定<!-- raw HTML omitted -->的狀態</li>
@@ -894,20 +888,141 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><strong>善用virtual &amp; override</strong></p>
 <hr>
-<p>第二個例子(不符合LSP)
-<img src="https://i.imgur.com/TFpAK4b.png" alt="">
-<img src="https://i.imgur.com/K1cnpgY.png" alt="">
-<img src="https://i.imgur.com/uGsEAqk.png" alt="">
-<img src="https://i.imgur.com/fQhoapU.png" alt="">
-<img src="https://i.imgur.com/oYuwnSY.png" alt="">
-有沒有人這樣解決
-<img src="https://i.imgur.com/PB3NJYv.png" alt=""></p>
-<p>修正(符合LSP)
-<img src="https://i.imgur.com/J8yvagG.png" alt="">
-<img src="https://i.imgur.com/3xdX7oW.png" alt="">
-<img src="https://i.imgur.com/BQzrAqh.png" alt="">
-<img src="https://i.imgur.com/AHZfosj.png" alt="">
-優點:這樣在編譯時期就可以看出錯誤</p>
+<p><strong>第二個例子(不符合LSP)</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public virtual double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return TotalSales
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public virtual void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class GoldCustomer : Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public override double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;GoldCustomer:Add&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class SilverCustomer:Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public overide double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;SilverCustomer:Add&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Enquiry:Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>        public overide double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Not allowed&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    List&lt;Customer&gt; Customers = new List&lt;Customer)();
+</span></span><span style="display:flex;"><span>    Customer.Add(new SilverCustomer());
+</span></span><span style="display:flex;"><span>    Customer.Add(new GoldCustomer());
+</span></span><span style="display:flex;"><span>    Customer.Add(new Enquiry());
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    foreach(Customer o in Customers)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        o.Add();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>有沒有人這樣解決?</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>class Enquiry:Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>        public overide double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>修正(符合LSP)</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>interface IDiscount
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    double getDiscount(double TotalSales);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IDatabase
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Customer:IDatabase,IDiscount
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public virtual double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return TotalSales
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public virtual void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class GoldCustomer : Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public override double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;GoldCustomer:Add&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class SilverCustomer:Customer
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public overide double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;SilverCustomer:Add&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Enquiry:IDiscount
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>        public overide double getDiscount(double TotalSales)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        return base.getDiscount(TotalSales) - 5;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public override void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(&#34;Not allowed&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    List&lt;Customer&gt; Customers = new List&lt;Customer)();
+</span></span><span style="display:flex;"><span>    Customer.Add(new SilverCustomer());
+</span></span><span style="display:flex;"><span>    Customer.Add(new GoldCustomer());
+</span></span><span style="display:flex;"><span>    Customer.Add(new Enquiry());
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    foreach(Customer o in Customers)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        o.Add();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>優點:這樣在編譯時期就可以看出錯誤</strong></p>
 <h2 id="關於lsp的實作">關於LSP的實作</h2>
 <ul>
 <li>採用<!-- raw HTML omitted -->類別繼承方式<!-- raw HTML omitted -->來進行開發
@@ -933,7 +1048,7 @@
 <h1 id="介面隔離原則isp">介面隔離原則ISP</h1>
 <ul>
 <li>
-<p>A:Many <!-- raw HTML omitted -->client specific interfaces<!-- raw HTML omitted --> are <!-- raw HTML omitted -->better than<!-- raw HTML omitted -->  <!-- raw HTML omitted -->one heneral purpose interface.<!-- raw HTML omitted --></p>
+<p>A:Many <!-- raw HTML omitted -->client specific interfaces<!-- raw HTML omitted --> are <!-- raw HTML omitted -->better than<!-- raw HTML omitted -->  <!-- raw HTML omitted -->one general purpose interface.<!-- raw HTML omitted --></p>
 </li>
 <li>
 <p>B:Clients <!-- raw HTML omitted -->should not<!-- raw HTML omitted --> be <!-- raw HTML omitted -->forced<!-- raw HTML omitted --> to depend upon <!-- raw HTML omitted -->interface<!-- raw HTML omitted --> that <!-- raw HTML omitted -->they don&rsquo;t use.<!-- raw HTML omitted --></p>
@@ -1030,8 +1145,8 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    Console.Writenline(&#34;\n\nOpen Close Principle Demo &#34;);
-</span></span><span style="display:flex;"><span>    DataProvider DataProviderObject = new SqlDataProvider();
-</span></span><span style="display:flex;"><span>    DataProviderObject.OpenProviderObject();
+</span></span><span style="display:flex;"><span>    DataProviderWithoutTransaction DataProviderObject = new SqlDataProvider();
+</span></span><span style="display:flex;"><span>    DataProviderObject.OpenConnection();
 </span></span><span style="display:flex;"><span>    DataProviderObject.ExcuteCommand();
 </span></span><span style="display:flex;"><span>    DataProviderObject.CloseConnection();
 </span></span><span style="display:flex;"><span>}
@@ -1074,23 +1189,128 @@
 <li>設計介面的時候，介面的大小應該如何判斷?如何群組?</li>
 <li>介面可以實作介面，使用的時機為何?</li>
 </ul>
-<p>例子2
-<img src="https://i.imgur.com/Xm9CUDJ.png" alt="">
-需求變了
-由用戶端來選擇要用的interface
-<img src="https://i.imgur.com/DPdX1FY.png" alt="">
-<img src="https://i.imgur.com/nWNC0Cr.png" alt=""></p>
-<p>例子3
+<p><strong>例子2</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console.WriteLine(&#34;\n\nOpen Close Principle Demo&#34;);
+</span></span><span style="display:flex;"><span>    IReadAndWrite Logger = new Logger();
+</span></span><span style="display:flex;"><span>    Logger.Write();
+</span></span><span style="display:flex;"><span>    Logger.Read();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IReadAndWrite
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    string Read();
+</span></span><span style="display:flex;"><span>    void Write();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Logger:IReadAndWrite
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public string Read(){return &#34;&#34;;}
+</span></span><span style="display:flex;"><span>    public void Write(){}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>需求變了
+由用戶端來選擇要用的interface</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Console.WriteLine(&#34;\n\nOpen Close Principle Demo&#34;);
+</span></span><span style="display:flex;"><span>    IWritable Logger = new Logger();
+</span></span><span style="display:flex;"><span>    Logger.Write();
+</span></span><span style="display:flex;"><span>    Logger.Read();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IReadable
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>     string Read();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IWritable
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>      void Write();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IReadAndWrite:IReadable,IWritable
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Logger:IReadAndWrite,IReadable,IWritable
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public string Read(){return &#34;&#34;;}
+</span></span><span style="display:flex;"><span>    public void Write(){}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>例子3
 main 跟多少型別發生相依
-Q&amp;A:兩個
-<img src="https://i.imgur.com/NcCeHZ8.png" alt=""></p>
-<p>例子4
-<img src="https://i.imgur.com/55gLW1h.png" alt="">
-<img src="https://i.imgur.com/0LGclxv.png" alt=""></p>
-<h1 id="相依反轉原則dip">相依反轉原則DIP</h1>
+Q&amp;A:兩個</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IDatabase cust = new Customer();
+</span></span><span style="display:flex;"><span>    cust.Add();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>interface IDatebase
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    void Add();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>class Customer:IDatebase
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Add()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WrtieLine(&#34;Add something&#34;);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>例子4
+<strong>試者找出該IAllnOnceCar介面 不符合介面隔離則地方</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Driver o = new Driver();
+</span></span><span style="display:flex;"><span>    o.StartEngine();
+</span></span><span style="display:flex;"><span>    o.Drive();
+</span></span><span style="display:flex;"><span>    o.StopEngine();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public interface IAllInOneCar
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    void StartEngine();
+</span></span><span style="display:flex;"><span>    void Drive();
+</span></span><span style="display:flex;"><span>    void StopEngine();
+</span></span><span style="display:flex;"><span>    void ChangeEngine();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Driver:IAllInOneCar
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void ChangeEngine(){
+</span></span><span style="display:flex;"><span>    throw new NotImplementedException();}
+</span></span><span style="display:flex;"><span>    public void Drive(){}
+</span></span><span style="display:flex;"><span>    public void StartEngine(){}
+</span></span><span style="display:flex;"><span>    public void StopEngine(){}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>修正後結果</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public void Main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IDriver o = new Driver();
+</span></span><span style="display:flex;"><span>    o.StartEngine();
+</span></span><span style="display:flex;"><span>    o.Drive();
+</span></span><span style="display:flex;"><span>    o.StopEngine();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public interface IDriver
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    void StartEngine();
+</span></span><span style="display:flex;"><span>    void Drive();
+</span></span><span style="display:flex;"><span>    void StopEngine();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Driver:IDriver
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void Drive(){}
+</span></span><span style="display:flex;"><span>    public void StartEngine(){}
+</span></span><span style="display:flex;"><span>    public void StopEngine(){}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public interface IMachanic
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    void ChangeEngine();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public Machanic:IMachanic
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public void ChangeEngine()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        throw new NotImplementedException();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="相依反轉原則dip">相依反轉原則DIP</h1>
 <ul>
 <li>
-<p>A.<!-- raw HTML omitted -->Hight-level modules<!-- raw HTML omitted --> should <!-- raw HTML omitted -->not <!-- raw HTML omitted -->depend on <!-- raw HTML omitted -->low-level modules<!-- raw HTML omitted -->.Both should <!-- raw HTML omitted -->depend on abstractions.<!-- raw HTML omitted --></p>
+<p>A.<!-- raw HTML omitted -->High-level modules<!-- raw HTML omitted --> should <!-- raw HTML omitted -->not <!-- raw HTML omitted -->depend on <!-- raw HTML omitted -->low-level modules<!-- raw HTML omitted -->.Both should <!-- raw HTML omitted -->depend on abstractions.<!-- raw HTML omitted --></p>
 </li>
 <li>
 <p>B.<!-- raw HTML omitted -->Abstractions<!-- raw HTML omitted --> should <!-- raw HTML omitted -->not<!-- raw HTML omitted --> depend on <!-- raw HTML omitted -->details.Details<!-- raw HTML omitted --> should <!-- raw HTML omitted -->depend on abstractions.<!-- raw HTML omitted --></p>
@@ -1121,11 +1341,32 @@ Q&amp;A:兩個
 </ul>
 <h2 id="常見的設計問題-4">常見的設計問題</h2>
 <ul>
-<li>類別與類別之間緊密耦合，改A壞B的狀況層出不窮
-<img src="https://i.imgur.com/Jy3FJJC.png" alt=""></li>
+<li>類別與類別之間緊密耦合，改A壞B的狀況層出不窮</li>
 </ul>
-<p>什麼是相依反轉?
-<img src="https://i.imgur.com/TMgkhwz.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class Client
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Service _Service;
+</span></span><span style="display:flex;"><span>    public void Client()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Service fooObj= new Service();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public class Service();
+</span></span></code></pre></div><p><img src="https://i.imgur.com/olgv8VG.png" alt=""></p>
+<p><strong>什麼是相依反轉?</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public class Client
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    IService _Service;
+</span></span><span style="display:flex;"><span>    public void Client(IService service)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _Service = service;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>public interface IService{}
+</span></span><span style="display:flex;"><span>public class MyService:IService{}
+</span></span><span style="display:flex;"><span>public class YourService:IService{}
+</span></span><span style="display:flex;"><span>public class TheirService:IService{}
+</span></span></code></pre></div><p><img src="https://i.imgur.com/3QXr2Xj.png" alt=""></p>
 <h2 id="關於dip的實作方式">關於DIP的實作方式</h2>
 <ul>
 <li>型別全部都相依於抽象，而不是具體實作</li>
@@ -1202,12 +1443,18 @@ Q&amp;A:兩個
     
     <a href="https://as880074.github.io/tags/solid" rel="tag" title="SOLID">#SOLID#</a>
     
+    <a href="https://as880074.github.io/tags/%e4%bf%9d%e5%93%a5%e8%aa%b2%e7%a8%8b" rel="tag" title="保哥課程">#保哥課程#</a>
+    
 </div>
 
 
 
      <div class="post-nav">
     <div class="post-nav-next post-nav-item">
+    
+        <a href="https://as880074.github.io/post/technical/20220623/threaddefinition/" rel="next" title="C# 開發實戰：非同步程式開發技巧-名詞介紹">
+        <i class="fa fa-chevron-left"></i> C# 開發實戰：非同步程式開發技巧-名詞介紹
+        </a>
     
     </div>
 
@@ -1284,14 +1531,14 @@ Q&amp;A:兩個
       <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
       <a href="https://as880074.github.io/post/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">文章</span>
       </a>
     </div>
     <div class="site-state-item site-state-categories">    
         <a href="https://as880074.github.io/categories/">      
          
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         
         <span class="site-state-item-name">分類</span>
         
@@ -1301,7 +1548,7 @@ Q&amp;A:兩個
     <div class="site-state-item site-state-tags">
         <a href="https://as880074.github.io/tags/">
          
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         
         <span class="site-state-item-name">標籤</span>
         </a>
